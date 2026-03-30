@@ -1,0 +1,34 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f0f0f0;
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.imageWrapper img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageLoaded img {
+  opacity: 1;
+}
+
+.counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.8);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}

@@ -1,0 +1,21 @@
+.langFade {
+  transition: opacity 75ms ease;
+}
+
+.langFading {
+  opacity: 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background-color: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.backdrop.backdropVisible {
+  opacity: 1;
+}

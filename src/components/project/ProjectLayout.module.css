@@ -1,0 +1,103 @@
+.wrapper {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+/* ── Desktop two-column ── */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "title  carousel"
+    "desc   carousel";
+  min-height: calc(100vh - var(--header-height));
+}
+
+.titleBlock {
+  grid-area: title;
+  padding: 3rem 2.5rem 2rem;
+}
+
+.descBlock {
+  grid-area: desc;
+  padding: 0 2.5rem 4rem;
+}
+
+.rightCol {
+  grid-area: carousel;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+}
+
+.projectTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.projectTitleZh {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+}
+
+.description p {
+  margin-bottom: 1rem;
+}
+
+/* ── Mobile single-column ── */
+@media (max-width: 768px) {
+  .columns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Title sticks at top; JS overrides `top` to push it off when desc approaches */
+  .titleBlock {
+    order: 1;
+    padding: 2rem 1.5rem 1.5rem;
+    position: sticky;
+    top: var(--header-height);
+    z-index: 2;
+    background-color: var(--color-bg);
+  }
+
+  /* Carousel sticks just below the title block */
+  .rightCol {
+    order: 2;
+    position: sticky;
+    top: calc(var(--header-height) + var(--title-block-height, 0px));
+    height: 50vh;
+    z-index: 0;
+  }
+
+  /* Description scrolls up over the carousel (z:1 > z:0), then over the title (JS pushes title off) */
+  .descBlock {
+    order: 3;
+    position: relative;
+    z-index: 1;
+    background-color: var(--color-bg);
+    padding: 2rem 1.5rem 3rem;
+  }
+}

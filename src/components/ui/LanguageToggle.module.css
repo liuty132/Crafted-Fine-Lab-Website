@@ -1,0 +1,36 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.toggle button {
+  position: relative;
+  font-family: var(--font-serif);
+  color: var(--color-text);
+}
+
+.toggle button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--transition-link);
+}
+
+.toggle[data-lang="zh"] button:first-child::after,
+.toggle[data-lang="en"] button:last-child::after {
+  transform: scaleX(1);
+}
+
+.separator {
+  color: var(--color-text-muted);
+  user-select: none;
+}

@@ -1,0 +1,105 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.studioName {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.studioNameZh {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 1px;
+  height: 2.5rem;
+  background-color: var(--color-border);
+  margin: 0 auto 3rem;
+}
+
+.manifestoWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 2rem;
+  max-width: 800px;
+  width: 100%;
+  text-align: left;
+}
+
+.manifestoColumn {
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.85;
+  white-space: pre-line;
+  color: var(--color-text);
+}
+
+.manifestoColumn.zh {
+  color: var(--color-text-muted);
+}
+
+.manifestoDivider {
+  background-color: var(--color-border);
+  width: 1px;
+}
+
+.enterButton {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.enterButton:hover > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.caret {
+  display: block;
+  font-size: 1.2rem;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .manifestoWrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem 0;
+  }
+
+  .manifestoDivider {
+    display: none;
+  }
+}

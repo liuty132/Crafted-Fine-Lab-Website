@@ -1,0 +1,40 @@
+.page {
+  min-height: 100vh;
+  padding: calc(var(--header-height) + 4rem) 2rem 4rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.item {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.value {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.emailLink {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

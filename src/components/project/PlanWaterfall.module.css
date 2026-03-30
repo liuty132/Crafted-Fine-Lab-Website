@@ -1,0 +1,31 @@
+.grid {
+  columns: 2;
+  column-gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    columns: 1;
+  }
+}
+
+.item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  background-color: #f0f0f0;
+  transition: opacity 0.3s ease;
+}
+
+.imageLoaded {
+  opacity: 1;
+}
