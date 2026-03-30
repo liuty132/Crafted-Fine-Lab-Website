@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onMenuOpen }: HeaderProps) {
-  const { lang } = useLanguage();
+  const { lang, fading } = useLanguage();
   const { isMenuOpen, closeMenu } = useMenu();
 
   return (
@@ -22,7 +22,9 @@ export default function Header({ onMenuOpen }: HeaderProps) {
           className={styles.menuButton}
           onClick={isMenuOpen ? closeMenu : onMenuOpen}
         >
-          {isMenuOpen ? UI.close[lang] : UI.menu[lang]}
+          <span className={`${styles.menuButtonText}${fading ? ` ${styles.menuButtonTextFading}` : ""}`}>
+            {isMenuOpen ? UI.close[lang] : UI.menu[lang]}
+          </span>
         </button>
       </div>
       <div className={styles.center}>

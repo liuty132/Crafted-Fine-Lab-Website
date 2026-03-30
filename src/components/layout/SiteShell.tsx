@@ -21,19 +21,21 @@ function SiteShellInner({ children, projects, research }: SiteShellProps) {
   const isHomepage = pathname === "/";
 
   return (
-    <div className={`${styles.langFade}${fading ? ` ${styles.langFading}` : ""}`}>
+    <>
       {!isHomepage && <Header onMenuOpen={openMenu} />}
-      {!isHomepage && <div className={`${styles.backdrop}${isMenuOpen ? ` ${styles.backdropVisible}` : ""}`} />}
-      {!isHomepage && (
-        <MenuOverlay
-          isOpen={isMenuOpen}
-          onClose={closeMenu}
-          projects={projects}
-          research={research}
-        />
-      )}
-      {children}
-    </div>
+      <div className={`${styles.langFade}${!isHomepage && fading ? ` ${styles.langFading}` : ""}`}>
+        {!isHomepage && <div className={`${styles.backdrop}${isMenuOpen ? ` ${styles.backdropVisible}` : ""}`} />}
+        {!isHomepage && (
+          <MenuOverlay
+            isOpen={isMenuOpen}
+            onClose={closeMenu}
+            projects={projects}
+            research={research}
+          />
+        )}
+        {children}
+      </div>
+    </>
   );
 }
 

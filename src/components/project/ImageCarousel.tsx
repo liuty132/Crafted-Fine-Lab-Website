@@ -80,7 +80,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
             src={image.src}
             alt={image.alt[lang]}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
             priority={i === 0}
             loading={i === 0 ? "eager" : "lazy"}
             unoptimized={image.src.endsWith(".svg")}

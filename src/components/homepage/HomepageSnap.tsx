@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function HomepageSnap({ projects, research }: Props) {
-  const { lang } = useLanguage();
+  const { lang, fading } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
   const menuSectionRef = useRef<HTMLDivElement>(null);
@@ -114,7 +114,9 @@ export default function HomepageSnap({ projects, research }: Props) {
       <div ref={menuHeaderRef} className={styles.menuHeader}>
         <div className={styles.headerLeft}>
           <button className={styles.closeButton} onClick={scrollToHero}>
-            {UI.close[lang]}
+            <span className={`${styles.closeButtonText}${fading ? ` ${styles.closeButtonTextFading}` : ""}`}>
+              {UI.close[lang]}
+            </span>
           </button>
         </div>
         <div className={styles.headerCenter}>
@@ -131,7 +133,7 @@ export default function HomepageSnap({ projects, research }: Props) {
       <section className={styles.menuSection} ref={menuSectionRef}>
         <div className={styles.scrim} ref={menuOverlayRef} />
         <div className={styles.menuHeaderSpacer} />
-        <div ref={menuBodyRef} className={styles.menuBody}>
+        <div ref={menuBodyRef} className={`${styles.menuBody}${fading ? ` ${styles.langFading}` : ""}`}>
           <div ref={tocWrapperRef} className={styles.tocWrapper} style={{ paddingTop: tocPaddingTop }}>
             <TableOfContents projects={projects} research={research} isMenuOpen={true} className={styles.tocPassthrough} />
           </div>

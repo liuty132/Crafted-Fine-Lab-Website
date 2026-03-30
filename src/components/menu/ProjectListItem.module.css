@@ -33,10 +33,6 @@
   transition: background-color 0.15s ease;
 }
 
-.item:active {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
 .itemVisible {
   animation: fadeSlideIn 0.15s ease both;
   animation-delay: var(--delay, 0s);

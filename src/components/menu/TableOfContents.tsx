@@ -55,7 +55,7 @@ export default function TableOfContents({
       const mobile = window.innerWidth <= 768;
       // Desktop: header (64) + scrollArea padding (64) + 4 headings (~93 each) + 3 margins (8 each) ≈ 520
       // Mobile: header (64) + scrollArea padding (16) + 4 headings (~72 each) + 0 margins ≈ 368
-      const overhead = mobile ? 368 : 520;
+      const overhead = mobile ? 368 : 550;
       const itemH = mobile ? ITEM_HEIGHT_MOBILE : ITEM_HEIGHT;
       setItemHeight(itemH);
       const available = window.innerHeight - overhead;

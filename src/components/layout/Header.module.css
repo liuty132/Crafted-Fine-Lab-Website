@@ -70,6 +70,14 @@
   font-weight: 400;
 }
 
+.menuButtonText {
+  transition: opacity 75ms ease;
+}
+
+.menuButtonTextFading {
+  opacity: 0;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 0 1.5rem;

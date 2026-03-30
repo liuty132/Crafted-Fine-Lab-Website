@@ -106,6 +106,19 @@
   }
 }
 
+.closeButtonText {
+  transition: opacity 75ms ease;
+}
+
+.closeButtonTextFading {
+  opacity: 0;
+}
+
+.langFading {
+  opacity: 0 !important;
+  transition: opacity 75ms ease;
+}
+
 .logoText {
   background: none;
   border: none;
