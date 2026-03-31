@@ -22,11 +22,15 @@
   background-color: currentColor;
   transform: scaleX(0);
   transform-origin: left center;
+  transition: none;
+}
+
+.toggle[data-ready] button::after {
   transition: transform var(--transition-link);
 }
 
-.toggle[data-lang="zh"] button:first-child::after,
-.toggle[data-lang="en"] button:last-child::after {
+.toggle[data-ready][data-lang="zh"] button:first-child::after,
+.toggle[data-ready][data-lang="en"] button:last-child::after {
   transform: scaleX(1);
 }
 

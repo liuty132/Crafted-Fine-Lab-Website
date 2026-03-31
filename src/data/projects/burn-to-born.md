@@ -18,11 +18,11 @@ carousel_images:
   #   alt_zh: 日落时分矗立于麦田中的塔楼
   #   width: 5000
   #   height: 5000
-  # - src: /images/burn-to-born/carousel/微信图片_20241205171715-2.jpg
-  #   alt_en: Tower viewed from the field at dawn
-  #   alt_zh: 黎明时分自麦田望向塔楼
-  #   width: 4954
-  #   height: 4954
+  - src: /images/burn-to-born/carousel/微信图片_20241205171715-2.jpg
+    alt_en: Tower viewed from the field at dawn
+    alt_zh: 黎明时分自麦田望向塔楼
+    width: 4954
+    height: 4954
   - src: /images/burn-to-born/carousel/6-2.jpg
     alt_en: Narrow stairway with slit lighting
     alt_zh: 带有缝隙采光的窄楼梯

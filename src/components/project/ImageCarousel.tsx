@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import type { ProjectImage } from "@/types";
 import type { Language } from "@/types";
@@ -13,18 +13,6 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  // Block wheel scroll on desktop to prevent scrolling left column
-  useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const block = (e: WheelEvent) => {
-      if (window.innerWidth > 1024) e.preventDefault();
-    };
-    el.addEventListener("wheel", block, { passive: false });
-    return () => el.removeEventListener("wheel", block);
-  }, []);
 
   const advance = useCallback(() => {
     setCurrent((c) => (c + 1) % images.length);
@@ -60,30 +48,30 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
   if (images.length === 0) return null;
 
   return (
-    <div
-      ref={carouselRef}
-      className={styles.carousel}
-      onClick={advance}
-    >
+    <div className={styles.carousel} onClick={advance}>
       {images.map((image, i) => (
         <div
           key={i}
-          className={`${styles.imageWrapper}${i === 0 ? ` ${styles.imageLoaded}` : ""}`}
+          className={`${styles.slide}${i === 0 ? ` ${styles.imageLoaded}` : ""}`}
           style={{ opacity: i === current ? 1 : 0, transition: "opacity 0.4s ease" }}
         >
-          <Image
-            src={image.src}
-            alt={image.alt[lang]}
-            fill
-            style={{ objectFit: "contain" }}
-            priority={i === 0}
-            loading={i === 0 ? "eager" : "lazy"}
-            unoptimized={image.src.endsWith(".svg")}
-            onLoad={(e) => {
-              const wrapper = (e.target as HTMLElement).closest(`.${styles.imageWrapper}`);
-              wrapper?.classList.add(styles.imageLoaded);
-            }}
-          />
+          <div className={styles.block}>
+            <Image
+              className={styles.image}
+              src={image.src}
+              alt={image.alt[lang]}
+              width={image.width}
+              height={image.height}
+              priority={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
+              unoptimized={image.src.endsWith(".svg")}
+              onLoad={(e) => {
+                const slide = (e.target as HTMLElement).closest(`.${styles.slide}`);
+                slide?.classList.add(styles.imageLoaded);
+              }}
+            />
+            <p className={styles.caption}>{image.alt[lang]}</p>
+          </div>
         </div>
       ))}
     </div>

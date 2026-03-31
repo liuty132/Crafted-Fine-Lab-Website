@@ -22,6 +22,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
   const descRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
 
+
   // Mobile only: track title height for carousel offset + push title off as description rises
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -57,6 +58,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
       // Once description's top enters the title zone, shrink sticky top to push title off
       const newTop = Math.min(headerH, descTop - titleH);
       title.style.top = `${newTop}px`;
+
     };
 
     window.addEventListener("scroll", update, { passive: true });
@@ -67,6 +69,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
       window.removeEventListener("resize", update);
     };
   }, []);
+
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
