@@ -6,23 +6,26 @@
 /* ── Desktop two-column ── */
 .columns {
   display: grid;
-  grid-template-columns: minmax(0, 720px) minmax(0, 1080px);
+  grid-template-columns: 1fr 1.6fr;
+  padding-left: 2rem;
+  padding-right: 2rem;
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "title  carousel"
     "desc   carousel";
-  justify-content: center;
+  max-width: calc(750px + 1200px + 16rem);
+  margin: 0 auto;
   min-height: calc(100vh - var(--header-height));
 }
 
 .titleBlock {
   grid-area: title;
-  padding: 3rem 1.25rem 2rem 2.5rem;
+  padding: 3rem 2rem 2rem 0;
 }
 
 .descBlock {
   grid-area: desc;
-  padding: 0 1.25rem 4rem 2.5rem;
+  padding: 0 2rem 4rem 0;
 }
 
 .rightCol {
@@ -31,8 +34,28 @@
   top: var(--header-height);
   height: calc(100vh - var(--header-height));
   overflow: hidden;
-  padding-left: 1.25rem;
-  padding-right: 2.5rem;
+  padding-left: 2rem;
+  padding-right: 0;
+}
+
+/* ── Larger desktop: increase padding ── */
+@media (min-width: 1440px) {
+  .columns {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .titleBlock {
+    padding-right: 4rem;
+  }
+
+  .descBlock {
+    padding-right: 4rem;
+  }
+
+  .rightCol {
+    padding-left: 4rem;
+  }
 }
 
 .projectTitle {
@@ -74,12 +97,14 @@
   .columns {
     display: flex;
     flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Title sticks at top; JS overrides `top` to push it off when desc approaches */
   .titleBlock {
     order: 1;
-    padding: 2rem 2.5rem 1.5rem;
+    padding: 2rem 4rem 1.5rem;
     position: sticky;
     top: var(--header-height);
     z-index: 2;
@@ -94,8 +119,8 @@
     height: 50vh;
     max-height: 500px;
     z-index: 0;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   /* Description scrolls up over the carousel (z:1 > z:0), then over the title (JS pushes title off) */
@@ -104,7 +129,7 @@
     position: relative;
     z-index: 1;
     background-color: var(--color-bg);
-    padding: 2rem 2.5rem 3rem;
+    padding: 2rem 4rem 3rem;
   }
 }
 
@@ -116,6 +141,8 @@
 
   .rightCol {
     max-height: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .descBlock {

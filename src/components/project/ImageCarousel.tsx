@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import type { ProjectImage } from "@/types";
 import type { Language } from "@/types";
@@ -13,6 +13,18 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Block wheel scroll on desktop to prevent scrolling left column
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const block = (e: WheelEvent) => {
+      if (window.innerWidth > 1024) e.preventDefault();
+    };
+    el.addEventListener("wheel", block, { passive: false });
+    return () => el.removeEventListener("wheel", block);
+  }, []);
 
   const advance = useCallback(() => {
     setCurrent((c) => (c + 1) % images.length);
@@ -49,6 +61,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
 
   return (
     <div
+      ref={carouselRef}
       className={styles.carousel}
       onClick={advance}
     >

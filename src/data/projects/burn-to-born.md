@@ -13,16 +13,16 @@ thumbnail:
   width: 80
   height: 80
 carousel_images:
-  - src: /images/burn-to-born/carousel/封面.jpg
-    alt_en: Tower rising from wheat field at sunset
-    alt_zh: 日落时分矗立于麦田中的塔楼
-    width: 5000
-    height: 5000
-  - src: /images/burn-to-born/carousel/微信图片_20241205171715-2.jpg
-    alt_en: Tower viewed from the field at dawn
-    alt_zh: 黎明时分自麦田望向塔楼
-    width: 4954
-    height: 4954
+  # - src: /images/burn-to-born/carousel/封面.jpg
+  #   alt_en: Tower rising from wheat field at sunset
+  #   alt_zh: 日落时分矗立于麦田中的塔楼
+  #   width: 5000
+  #   height: 5000
+  # - src: /images/burn-to-born/carousel/微信图片_20241205171715-2.jpg
+  #   alt_en: Tower viewed from the field at dawn
+  #   alt_zh: 黎明时分自麦田望向塔楼
+  #   width: 4954
+  #   height: 4954
   - src: /images/burn-to-born/carousel/6-2.jpg
     alt_en: Narrow stairway with slit lighting
     alt_zh: 带有缝隙采光的窄楼梯
@@ -91,6 +91,6 @@ plan_images:
     height: 3093
 ---
 
-A funerary tower standing alone in a wheat field, unifying cremation, farewell, and eternal rest within a single vertical ritual sequence. The seed-shaped plan — the primordial form of life — responds to the perpetual cycle of death and rebirth that binds agriculture and human passage alike.
+My design envisions a rural funeral hall inspired by the structure of seeds — a symbol of life and renewal. The façade elements evoke the texture of ash, reminiscent of the residue from burning. In rural areas, the stubble left after harvest is often burned to enrich the soil, preparing it for the next season's growth. This cycle of burning and rebirth mirrors the rhythm of life and death: death becomes the seed for new beginnings. Thus, the funeral hall integrates the motifs of burning and seeds, invoking the connection that rural people feel with the land and the circle of life.
 
-Perforated brick walls admit light that drifts slowly across interior surfaces as the day turns, marking time like breath. Visitors descend to the subterranean farewell hall, then ascend through ascending columbarium levels, ultimately reaching the observation deck at the summit — completing a journey between departure and renewal, between earth and sky.
+The building provides spaces for cremation, ceremonial gatherings, and the storage of ashes. Visitors first descend into a sunken memorial space, then ascend through a spiraling path to the columbarium. This descending and ascending flow reflects traditional Chinese beliefs about life and death, where the deceased return to the earth before their spirits ascend to the heavens.

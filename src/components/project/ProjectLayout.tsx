@@ -20,6 +20,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
 
   // Mobile only: track title height for carousel offset + push title off as description rises
   useEffect(() => {
@@ -30,11 +31,23 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
 
     const update = () => {
       const isMobile = window.matchMedia("(max-width: 1024px), (max-aspect-ratio: 4/5)").matches;
+      const rightCol = rightColRef.current;
       if (!isMobile) {
         title.style.removeProperty("top");
         wrapper.style.removeProperty("--title-block-height");
+        // Cap carousel height at left column content height
+        if (rightCol) {
+          const descStyle = getComputedStyle(desc);
+          const descChildrenH = Array.from(desc.children).reduce(
+            (sum, child) => sum + (child as HTMLElement).offsetHeight, 0
+          );
+          const descPadding = parseFloat(descStyle.paddingTop) + parseFloat(descStyle.paddingBottom);
+          const leftColH = title.offsetHeight + descChildrenH + descPadding;
+          rightCol.style.maxHeight = `${Math.min(1440, leftColH)}px`;
+        }
         return;
       }
+      if (rightCol) rightCol.style.removeProperty("max-height");
       const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
       const headerH = 4 * rem; // --header-height: 4rem
       const titleH = title.offsetHeight;
@@ -68,7 +81,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
         </div>
 
         {/* Right column / mobile middle: sticky image carousel */}
-        <div className={styles.rightCol}>
+        <div className={styles.rightCol} ref={rightColRef}>
           <ImageCarousel images={project.carouselImages} lang={lang} />
         </div>
 
