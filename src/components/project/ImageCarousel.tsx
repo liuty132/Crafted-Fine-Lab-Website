@@ -62,6 +62,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
               alt={image.alt[lang]}
               width={image.width}
               height={image.height}
+              sizes="(max-width: 768px) 100vw, 60vw"
               priority={i === 0}
               loading={i === 0 ? "eager" : "lazy"}
               unoptimized={image.src.endsWith(".svg")}

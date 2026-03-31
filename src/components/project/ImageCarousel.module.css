@@ -26,11 +26,12 @@
 }
 
 .image {
-  max-width: 100cqw;
-  max-height: calc(100cqh - 1.9rem);
-  width: auto;
+  width: 100%;
   height: auto;
+  max-height: calc(100cqh - 1.9rem);
   display: block;
+  object-fit: contain;
+  object-position: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
