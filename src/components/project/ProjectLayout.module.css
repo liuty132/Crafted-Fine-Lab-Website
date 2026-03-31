@@ -6,22 +6,23 @@
 /* ── Desktop two-column ── */
 .columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 720px) minmax(0, 1080px);
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "title  carousel"
     "desc   carousel";
+  justify-content: center;
   min-height: calc(100vh - var(--header-height));
 }
 
 .titleBlock {
   grid-area: title;
-  padding: 3rem 2.5rem 2rem;
+  padding: 3rem 1.25rem 2rem 2.5rem;
 }
 
 .descBlock {
   grid-area: desc;
-  padding: 0 2.5rem 4rem;
+  padding: 0 1.25rem 4rem 2.5rem;
 }
 
 .rightCol {
@@ -30,6 +31,8 @@
   top: var(--header-height);
   height: calc(100vh - var(--header-height));
   overflow: hidden;
+  padding-left: 1.25rem;
+  padding-right: 2.5rem;
 }
 
 .projectTitle {
@@ -66,8 +69,8 @@
   margin-bottom: 1rem;
 }
 
-/* ── Mobile single-column ── */
-@media (max-width: 768px) {
+/* ── Single-column (mobile + tablet portrait) ── */
+@media (max-width: 1024px), (max-aspect-ratio: 4/5) {
   .columns {
     display: flex;
     flex-direction: column;
@@ -76,7 +79,7 @@
   /* Title sticks at top; JS overrides `top` to push it off when desc approaches */
   .titleBlock {
     order: 1;
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 2rem 2.5rem 1.5rem;
     position: sticky;
     top: var(--header-height);
     z-index: 2;
@@ -89,7 +92,10 @@
     position: sticky;
     top: calc(var(--header-height) + var(--title-block-height, 0px));
     height: 50vh;
+    max-height: 500px;
     z-index: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Description scrolls up over the carousel (z:1 > z:0), then over the title (JS pushes title off) */
@@ -98,6 +104,21 @@
     position: relative;
     z-index: 1;
     background-color: var(--color-bg);
+    padding: 2rem 2.5rem 3rem;
+  }
+}
+
+/* ── Phone overrides ── */
+@media (max-width: 768px) {
+  .titleBlock {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .rightCol {
+    max-height: none;
+  }
+
+  .descBlock {
     padding: 2rem 1.5rem 3rem;
   }
 }

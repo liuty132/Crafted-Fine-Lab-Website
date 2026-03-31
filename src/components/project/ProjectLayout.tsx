@@ -29,7 +29,7 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
     if (!wrapper || !title || !desc) return;
 
     const update = () => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const isMobile = window.matchMedia("(max-width: 1024px), (max-aspect-ratio: 4/5)").matches;
       if (!isMobile) {
         title.style.removeProperty("top");
         wrapper.style.removeProperty("--title-block-height");

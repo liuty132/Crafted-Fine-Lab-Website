@@ -82,7 +82,7 @@ export default function HomepageSnap({ projects, research }: Props) {
       const progress = maxScroll > 0 ? Math.min(1, scrollTop / maxScroll) : 0;
 
       // Hero fades out as menu scrolls in
-      hero.style.opacity = String(Math.max(0, 1 - progress * 2));
+      hero.style.opacity = String(1 - progress);
 
       // Scale scroll range to full viewport clip reveal
       const revealPx = Math.min(progress * vh, vh);

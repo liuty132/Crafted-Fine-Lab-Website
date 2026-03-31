@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import type { ProjectImage } from "@/types";
 import type { Language } from "@/types";
@@ -13,15 +13,17 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0);
-  const touchStartX = useRef<number | null>(null);
 
   const advance = useCallback(() => {
     setCurrent((c) => (c + 1) % images.length);
   }, [images.length]);
 
-  const retreat = useCallback(() => {
-    setCurrent((c) => (c - 1 + images.length) % images.length);
-  }, [images.length]);
+  // Auto-advance every 5 seconds, reset on manual interaction
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const id = setInterval(advance, 5000);
+    return () => clearInterval(id);
+  }, [current, images.length, advance]);
 
   // Prefetch next image during idle time
   useEffect(() => {
@@ -43,32 +45,12 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
     }
   }, [current, images]);
 
-  function handleTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-  }
-
-  function handleTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null) return;
-    const delta = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(delta) > 40) {
-      if (delta > 0) advance();
-      else retreat();
-    }
-    touchStartX.current = null;
-  }
-
   if (images.length === 0) return null;
 
   return (
     <div
       className={styles.carousel}
       onClick={advance}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      role="button"
-      aria-label="Next image"
-      tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && advance()}
     >
       {images.map((image, i) => (
         <div
@@ -91,11 +73,6 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
           />
         </div>
       ))}
-      {images.length > 1 && (
-        <span className={styles.counter}>
-          {current + 1} / {images.length}
-        </span>
-      )}
     </div>
   );
 }

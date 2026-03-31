@@ -16,7 +16,7 @@
 
 .menuSection {
   height: 100vh;
-  margin-top: -30vh; /* overlap hero bottom → reduces scroll distance to 70vh */
+  margin-top: -50vh; /* overlap hero bottom → reduces scroll distance to 70vh */
   scroll-snap-align: end;
   scroll-snap-stop: always;
   background-color: var(--color-overlay-bg);
@@ -47,7 +47,7 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-overlay-bg);
   z-index: 20;

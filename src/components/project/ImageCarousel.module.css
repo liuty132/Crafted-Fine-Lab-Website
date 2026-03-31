@@ -21,14 +21,3 @@
 .imageLoaded img {
   opacity: 1;
 }
-
-.counter {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.8);
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
