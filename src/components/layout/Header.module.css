@@ -53,7 +53,7 @@
   transition: transform var(--transition-link);
 }
 
-@media (hover: hover) {
+@media (hover: hover), (any-pointer: fine) {
   .menuButton:hover::after {
     transform: scaleX(1);
   }

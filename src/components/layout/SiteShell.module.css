@@ -13,9 +13,11 @@
   background-color: rgba(0, 0, 0, 0.1);
   pointer-events: none;
   opacity: 0;
+  visibility: hidden;
   transition: opacity 0.35s ease;
 }
 
 .backdrop.backdropVisible {
   opacity: 1;
+  visibility: visible;
 }

@@ -1,9 +1,6 @@
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background-color: var(--color-overlay-bg);
   z-index: 200;
   display: flex;
@@ -90,7 +87,7 @@
   transition: transform var(--transition-link);
 }
 
-@media (hover: hover) {
+@media (hover: hover), (any-pointer: fine) {
   .closeButton:hover::after {
     transform: scaleX(1);
   }

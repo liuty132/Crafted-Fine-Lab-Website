@@ -44,7 +44,7 @@
   transition: transform var(--transition-link);
 }
 
-@media (hover: hover) {
+@media (hover: hover), (any-pointer: fine) {
   a.sectionHeading:hover .linkText::after {
     transform: scaleX(1);
   }
@@ -78,7 +78,7 @@ button.sectionHeading {
   transition: transform var(--transition-link);
 }
 
-@media (hover: hover) {
+@media (hover: hover), (any-pointer: fine) {
   button.sectionHeading:hover .expandableText::after {
     transform: scaleX(1);
   }

@@ -86,7 +86,7 @@
   transition: transform var(--transition-link);
 }
 
-@media (hover: hover) {
+@media (hover: hover), (any-pointer: fine) {
   .item:hover .title::after {
     transform: scaleX(1);
   }
