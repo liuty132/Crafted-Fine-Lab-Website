@@ -14,9 +14,9 @@ interface ImageCarouselProps {
 export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [blockSize, setBlockSize] = useState<{ w: number; h: number } | null>(null);
+  const [blockSizes, setBlockSizes] = useState<Array<{ w: number; h: number }>>([]);
 
-  // Compute block size for current image to fit contain-style within carousel
+  // Compute block size for every image to fit contain-style within carousel
   useEffect(() => {
     const el = carouselRef.current;
     if (!el || images.length === 0) return;
@@ -24,28 +24,31 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
     const compute = () => {
       const cW = el.clientWidth;
       const cH = el.clientHeight;
+      if (cW === 0 || cH === 0) return;
       const isMobile = window.innerWidth <= 768;
-      const captionH = isMobile ? 36 : 30; // mobile needs more reserve
+      const captionH = isMobile ? 36 : 30;
       const availH = cH - captionH;
-      const image = images[current];
-      const imgAspect = image.width / image.height;
-      const containerAspect = cW / availH;
 
-      if (imgAspect > containerAspect) {
-        // Wide image: width-constrained
-        const imgH = cW / imgAspect;
-        setBlockSize({ w: cW, h: imgH + captionH });
-      } else {
-        // Tall image: height-constrained
-        setBlockSize({ w: availH * imgAspect, h: cH });
-      }
+      const sizes = images.map((image) => {
+        const imgAspect = image.width / image.height;
+        const containerAspect = cW / availH;
+
+        if (imgAspect > containerAspect) {
+          const imgH = cW / imgAspect;
+          return { w: cW, h: imgH + captionH };
+        } else {
+          return { w: availH * imgAspect, h: cH };
+        }
+      });
+
+      setBlockSizes(sizes);
     };
 
     compute();
     const ro = new ResizeObserver(compute);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [current, images]);
+  }, [images]);
 
   const advance = useCallback(() => {
     setCurrent((c) => (c + 1) % images.length);
@@ -90,7 +93,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
         >
           <div
             className={styles.block}
-            style={blockSize ? { width: blockSize.w, height: blockSize.h } : undefined}
+            style={blockSizes[i] ? { width: blockSizes[i].w, height: blockSizes[i].h } : undefined}
           >
             <div className={styles.imageBox}>
               <Image
