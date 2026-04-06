@@ -47,6 +47,7 @@ html {
 }
 
 body {
+  min-width: 320px;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-serif);

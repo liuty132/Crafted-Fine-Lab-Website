@@ -5,6 +5,7 @@
   max-height: calc(100vh - var(--header-height) - 4rem);
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 .section {
@@ -136,6 +137,7 @@ button.sectionHeading {
 
 /* Arrow indicator — desktop only */
 .arrow {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -143,12 +145,33 @@ button.sectionHeading {
   height: 1em;
   line-height: 1;
   margin-left: 0.5rem;
-  transition: transform 0.2s ease;
   transform: rotate(90deg);
+  vertical-align: -0.22em;
 }
 
-.expanded .arrow {
-  transform: rotate(-90deg);
+.arrowDown,
+.arrowUp {
+  position: absolute;
+}
+
+.arrowDown {
+  opacity: 1;
+  transition: opacity 0.15s ease 0.15s;
+}
+
+.arrowUp {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.expanded .arrowDown {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.expanded .arrowUp {
+  opacity: 1;
+  transition: opacity 0.15s ease 0.15s;
 }
 
 /* ── Mobile: collapsed by default, simple expand (no snap, no fixed height) ── */

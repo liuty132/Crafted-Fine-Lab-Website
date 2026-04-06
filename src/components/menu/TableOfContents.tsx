@@ -138,7 +138,7 @@ export default function TableOfContents({
           onClick={() => handleToggle("projects")}
         >
           <span className={styles.expandableText}>I. {UI.projects[lang]}</span>
-          <span className={styles.arrow}>›</span>
+          <span className={styles.arrow}><span className={styles.arrowDown}>›</span><span className={styles.arrowUp}>‹</span></span>
         </button>
 
         <div className={styles.listContainer}>
@@ -175,7 +175,7 @@ export default function TableOfContents({
           onClick={() => handleToggle("research")}
         >
           <span className={styles.expandableText}>II. {UI.research[lang]}</span>
-          <span className={styles.arrow}>›</span>
+          <span className={styles.arrow}><span className={styles.arrowDown}>›</span><span className={styles.arrowUp}>‹</span></span>
         </button>
 
         <div className={styles.listContainer}>
