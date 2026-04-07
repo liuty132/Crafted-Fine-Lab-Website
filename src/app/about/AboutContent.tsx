@@ -12,7 +12,7 @@ export default function AboutContent() {
 
   return (
     <div className={styles.page}>
-      <p className={styles.heading}>II. {UI.about[lang]}</p>
+      <p className={styles.heading}>{UI.about[lang]}</p>
       <div className={styles.body}>
         {paragraphs.map((p, i) => (
           <p key={i}>{p}</p>

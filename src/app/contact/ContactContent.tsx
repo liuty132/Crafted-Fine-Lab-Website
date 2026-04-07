@@ -10,7 +10,7 @@ export default function ContactContent() {
   useDocumentTitle(UI.contact[lang]);
   return (
     <div className={styles.page}>
-      <p className={styles.heading}>III. {UI.contact[lang]}</p>
+      <p className={styles.heading}>{UI.contact[lang]}</p>
       <div className={styles.item}>
         <p className={styles.label}>Email</p>
         <a href={`mailto:${UI.contactEmail[lang]}`} className={styles.emailLink}>

@@ -89,7 +89,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
         <div
           key={i}
           className={`${styles.slide}${i === 0 ? ` ${styles.imageLoaded}` : ""}`}
-          style={{ opacity: i === current ? 1 : 0, transition: "opacity 0.4s ease" }}
+          style={{ opacity: i === current ? 1 : 0, transition: "opacity 0.6s ease" }}
         >
           <div
             className={styles.block}
@@ -111,7 +111,9 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
                 }}
               />
             </div>
-            <p className={styles.caption}>{image.alt[lang]}</p>
+            <p className={styles.caption}>
+              {image.alt[lang]} ({i + 1}/{images.length})
+            </p>
           </div>
         </div>
       ))}
