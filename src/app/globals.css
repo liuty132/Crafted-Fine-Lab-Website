@@ -5,7 +5,7 @@
   --color-border: #d4d4d4;
   --color-overlay-bg: #ffffff;
 
-  --font-serif: var(--font-cormorant), 'Songti SC', 'SimSun', Georgia, serif;
+  --font-serif: var(--font-cormorant), var(--font-noto-serif-sc), 'Songti SC', 'SimSun', Georgia, serif;
 
   --header-height: 4rem;
   --menu-item-height: 88px;
