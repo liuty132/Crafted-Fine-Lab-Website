@@ -1,7 +1,7 @@
 ---
 order: 3
 title_en: A Gentle Parasite
-title_zh: ""
+title_zh: 寄生之轻
 year: 2025
 location_en: ""
 location_zh: ""

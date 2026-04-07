@@ -45,9 +45,11 @@ async function parseResearchFile(slug: string): Promise<Project> {
 }
 
 export async function getAllResearch(): Promise<Project[]> {
+  if (!fs.existsSync(researchDir)) return [];
   const filenames = fs
     .readdirSync(researchDir)
     .filter((f) => f.endsWith(".md"));
+  if (filenames.length === 0) return [];
   const slugs = filenames.map((f) => f.replace(/\.md$/, ""));
   return Promise.all(slugs.map(parseResearchFile));
 }
