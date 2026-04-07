@@ -39,3 +39,29 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# placeholder projects
+src/data/projects/bamboo-bridge.md
+src/data/projects/canal-studio.md
+src/data/projects/courtyard-studio.md
+src/data/projects/forest-observatory.md
+src/data/projects/garden-wall.md
+src/data/projects/hilltop-chapel.md
+src/data/projects/ink-gallery.md
+src/data/projects/lakeside-pavilion.md
+src/data/projects/mineral-spa.md
+src/data/projects/mountain-retreat.md
+src/data/projects/pine-retreat.md
+src/data/projects/river-pavilion.md
+src/data/projects/stone-library.md
+src/data/projects/tea-house.md
+src/data/projects/threshold-house.md
+src/data/projects/urban-fragment.md
+src/data/projects/valley-dwelling.md
+src/data/projects/water-court.md
+
+# placeholder research
+src/data/research/craft-and-computation.md
+src/data/research/dwelling-patterns.md
+src/data/research/material-memory.md
+src/data/research/threshold-typology.md
