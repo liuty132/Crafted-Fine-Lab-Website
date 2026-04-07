@@ -36,15 +36,9 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
       if (!isMobile) {
         title.style.removeProperty("top");
         wrapper.style.removeProperty("--title-block-height");
-        // Cap carousel height at left column content height
         if (rightCol) {
-          const descStyle = getComputedStyle(desc);
-          const descChildrenH = Array.from(desc.children).reduce(
-            (sum, child) => sum + (child as HTMLElement).offsetHeight, 0
-          );
-          const descPadding = parseFloat(descStyle.paddingTop) + parseFloat(descStyle.paddingBottom);
-          const leftColH = title.offsetHeight + descChildrenH + descPadding;
-          rightCol.style.maxHeight = `${Math.min(1440, leftColH)}px`;
+          rightCol.style.removeProperty("height");
+          rightCol.style.removeProperty("top");
         }
         return;
       }

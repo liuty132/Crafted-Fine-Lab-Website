@@ -32,7 +32,7 @@
   grid-area: carousel;
   position: sticky;
   top: var(--header-height);
-  height: calc(100dvh - var(--header-height));
+  height: min(calc(100dvh - var(--header-height)), 1200px);
   overflow: hidden;
   padding-left: 2rem;
   padding-right: 0;

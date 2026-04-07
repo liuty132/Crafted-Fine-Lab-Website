@@ -48,8 +48,17 @@ export async function getAllProjects(): Promise<Project[]> {
   const filenames = fs
     .readdirSync(projectsDir)
     .filter((f) => f.endsWith(".md"));
-  const slugs = filenames.map((f) => f.replace(/\.md$/, ""));
-  return Promise.all(slugs.map(parseProjectFile));
+
+  // Read order from frontmatter, sort by it
+  const entries = filenames.map((f) => {
+    const slug = f.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(projectsDir, f), "utf8");
+    const { data } = matter(raw);
+    return { slug, order: typeof data.order === "number" ? data.order : 999 };
+  });
+  entries.sort((a, b) => a.order - b.order);
+
+  return Promise.all(entries.map((e) => parseProjectFile(e.slug)));
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
