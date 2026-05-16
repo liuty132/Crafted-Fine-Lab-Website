@@ -6,7 +6,7 @@
   column-gap: 4rem;
   row-gap: 2rem;
   padding: 5vh 2rem;
-  max-width: 1440px;
+  max-width: 960px;
   margin: 0 auto;
   position: relative;
 }
@@ -26,7 +26,7 @@
 
 .studioNameZh {
   font-family: 'FZ FangWei ZhuZi', var(--font-noto-serif-sc), 'Songti SC', 'SimSun', serif;
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(1.4rem, 3vw, 2.25rem);
   font-weight: 400;
   letter-spacing: 0.25em;
   color: var(--color-text);
@@ -36,7 +36,7 @@
 
 .studioName {
   font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
-  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.2rem);
   font-weight: 300;
   letter-spacing: 0.3em;
   color: var(--color-text);
@@ -53,35 +53,35 @@
 }
 
 .slogan {
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   color: var(--color-text);
   margin: 0;
-  line-height: 1.9;
+  line-height: 1.85;
 }
 
 .manifesto {
-  grid-column: 1;
+  grid-column: 1 / -1;
   grid-row: 4;
   align-self: start;
-  margin-top: 9rem;
-  max-width: 32rem;
+  margin-top: 5rem;
+  max-width: 36rem;
 }
 
 .manifestoZh {
-  font-size: clamp(0.85rem, 1.15vw, 1rem);
+  font-size: 0.95rem;
   font-weight: 300;
-  line-height: 2;
+  line-height: 1.55;
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
   margin: 0;
 }
 
 .manifestoEn {
-  font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+  font-size: 0.95rem;
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.55;
   white-space: pre-line;
   color: var(--color-text-muted);
   margin: 1.25rem 0 0;
