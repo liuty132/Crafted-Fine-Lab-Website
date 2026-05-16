@@ -5,6 +5,7 @@ import HomepageHero from "./HomepageHero";
 import TableOfContents from "@/components/menu/TableOfContents";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { UI } from "@/lib/ui";
 import type { Project } from "@/types";
 import styles from "./HomepageSnap.module.css";
@@ -16,6 +17,7 @@ interface Props {
 
 export default function HomepageSnap({ projects, research }: Props) {
   const { lang, fading } = useLanguage();
+  useDocumentTitle();
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
   const menuSectionRef = useRef<HTMLDivElement>(null);
