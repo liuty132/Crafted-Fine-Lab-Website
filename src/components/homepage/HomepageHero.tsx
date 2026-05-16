@@ -12,7 +12,7 @@ export default function HomepageHero({ onEnter }: HomepageHeroProps) {
     <main className={styles.hero}>
       <div className={styles.titleBlock}>
         <h1 className={styles.studioNameZh}>至缮社</h1>
-        <p className={styles.studioName}>Shàn Architects + Lab</p>
+        <p className={styles.studioName}><span className={styles.studioNameAccent}>Shàn</span> Architects + Lab</p>
       </div>
 
       <div className={styles.slogans}>

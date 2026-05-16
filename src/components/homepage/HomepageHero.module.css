@@ -6,7 +6,7 @@
   column-gap: 4rem;
   row-gap: 2rem;
   padding: 5vh 2rem;
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
@@ -41,6 +41,10 @@
   letter-spacing: 0.3em;
   color: var(--color-text);
   margin: 1rem 0 0;
+}
+
+.studioNameAccent {
+  font-weight: 600;
 }
 
 .slogans {
