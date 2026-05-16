@@ -124,7 +124,7 @@
 .logoText {
   background: none;
   border: none;
-  font-family: inherit;
+  font-family: 'FZ FangWei ZhuZi', var(--font-noto-serif-sc), 'Songti SC', 'SimSun', serif;
   cursor: pointer;
   color: var(--color-text);
   font-size: 1rem;

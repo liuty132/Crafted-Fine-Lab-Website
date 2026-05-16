@@ -6,7 +6,7 @@ import styles from "./PlanWaterfall.module.css";
 interface PlanWaterfallProps {
   images: ProjectImage[];
   lang: Language;
-  onImageClick: (image: ProjectImage) => void;
+  onImageClick: (index: number) => void;
 }
 
 export default function PlanWaterfall({
@@ -22,10 +22,10 @@ export default function PlanWaterfall({
         <div
           key={i}
           className={styles.item}
-          onClick={() => onImageClick(image)}
+          onClick={() => onImageClick(i)}
           role="button"
           tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && onImageClick(image)}
+          onKeyDown={(e) => e.key === "Enter" && onImageClick(i)}
           aria-label={image.alt[lang]}
         >
           <Image

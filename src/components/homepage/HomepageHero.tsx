@@ -10,21 +10,27 @@ interface HomepageHeroProps {
 export default function HomepageHero({ onEnter }: HomepageHeroProps) {
   return (
     <main className={styles.hero}>
-      <p className={styles.studioName}>Crafted Fine Lab</p>
-      <p className={styles.studioNameZh}>至缮社</p>
-
-      <div className={styles.divider} />
-
-      <div className={styles.manifestoWrapper}>
-        <p className={styles.manifestoColumn}>{MANIFESTO.en}</p>
-        <div className={styles.manifestoDivider} />
-        <p className={`${styles.manifestoColumn} ${styles.zh}`}>
-          {MANIFESTO.zh}
-        </p>
+      <div className={styles.titleBlock}>
+        <h1 className={styles.studioNameZh}>至缮社</h1>
+        <p className={styles.studioName}>Shàn Architects + Lab</p>
       </div>
 
-      <button className={styles.enterButton} onClick={onEnter}>
-        <span>Enter</span>
+      <div className={styles.slogans}>
+        <p className={styles.slogan}>缮其旧，成其善</p>
+        <p className={styles.slogan}>缓修细琢，止于至善</p>
+      </div>
+
+      <div className={styles.manifesto}>
+        <p className={styles.manifestoZh}>{MANIFESTO.zh}</p>
+        <p className={styles.manifestoEn}>{MANIFESTO.en}</p>
+      </div>
+
+      <button
+        type="button"
+        className={styles.scrollHint}
+        onClick={onEnter}
+        aria-label="Scroll to menu"
+      >
         <span className={styles.caret}>↓</span>
       </button>
     </main>

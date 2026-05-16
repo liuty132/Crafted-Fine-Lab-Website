@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'FZ FangWei ZhuZi';
+  src: url('/fonts/FZFWZhuZiABiaoTMCJW.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+81F3, U+7F2E, U+793E;
+}
+
 :root {
   --color-bg: #ffffff;
   --color-text: #000000;
@@ -8,7 +17,7 @@
   --font-serif: var(--font-cormorant), var(--font-noto-serif-sc), 'Songti SC', 'SimSun', Georgia, serif;
 
   --header-height: 4rem;
-  --menu-item-height: 88px;
+  --menu-item-height: 104px;
 
   --transition-link: 0.3s ease;
   --transition-modal: 0.25s ease;

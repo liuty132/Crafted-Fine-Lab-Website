@@ -6,7 +6,7 @@ import PlanWaterfall from "./PlanWaterfall";
 import PlanModal from "./PlanModal";
 import { useLanguage } from "@/context/LanguageContext";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
-import type { Project, ProjectImage } from "@/types";
+import type { Project } from "@/types";
 import styles from "./ProjectLayout.module.css";
 
 interface ProjectLayoutProps {
@@ -15,7 +15,7 @@ interface ProjectLayoutProps {
 
 export default function ProjectLayout({ project }: ProjectLayoutProps) {
   const { lang } = useLanguage();
-  const [modalImage, setModalImage] = useState<ProjectImage | null>(null);
+  const [modalIndex, setModalIndex] = useState<number | null>(null);
   useDocumentTitle(project.title[lang]);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -71,7 +71,6 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
         {/* Title */}
         <div className={styles.titleBlock} ref={titleRef}>
           <h1 className={styles.projectTitle}>{project.title[lang]}</h1>
-          <p className={styles.projectTitleZh}>{project.title.zh}</p>
           <p className={styles.meta}>
             {project.year} — {project.location[lang]}
           </p>
@@ -93,15 +92,16 @@ export default function ProjectLayout({ project }: ProjectLayoutProps) {
           <PlanWaterfall
             images={project.planImages}
             lang={lang}
-            onImageClick={setModalImage}
+            onImageClick={setModalIndex}
           />
         </div>
       </div>
 
       <PlanModal
-        image={modalImage}
+        images={project.planImages}
+        index={modalIndex}
         lang={lang}
-        onClose={() => setModalImage(null)}
+        onClose={() => setModalIndex(null)}
       />
     </div>
   );

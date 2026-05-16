@@ -36,8 +36,11 @@ export default function ProjectListItem({ project, lang, basePath = "/projects",
       style={{ "--delay": `${delay}s` } as React.CSSProperties}
       onClick={onClick}
     >
-      <span className={styles.title}>
-        <span className={styles.titleInner}>{project.title[lang]}</span>
+      <span className={styles.titleWrapper}>
+        <span className={styles.title}>
+          <span className={styles.titleInner}>{project.title[lang]}</span>
+        </span>
+        <span className={styles.location}>{project.location[lang]}</span>
       </span>
       <Image
         src={project.thumbnail.src}

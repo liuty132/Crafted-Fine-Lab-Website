@@ -66,13 +66,6 @@
   line-height: 1.2;
 }
 
-.projectTitleZh {
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
-  font-weight: 300;
-  color: var(--color-text-muted);
-  margin-bottom: 0.75rem;
-}
-
 .meta {
   font-size: 0.8rem;
   letter-spacing: 0.1em;

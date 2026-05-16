@@ -43,15 +43,35 @@
   animation-delay: var(--delay, 0s);
 }
 
+.titleWrapper {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
 .thumbnail {
   flex-shrink: 0;
   width: 64px;
   height: 64px;
   object-fit: cover;
   background-color: #f0f0f0;
-  margin-left: auto;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.location {
+  position: absolute;
+  right: 0.75rem;
+  bottom: calc((var(--menu-item-height) - 0.5rem - 64px) / 2);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .thumbnailLoaded {
@@ -100,5 +120,9 @@
   .thumbnail {
     width: 52px;
     height: 52px;
+  }
+
+  .location {
+    display: none;
   }
 }

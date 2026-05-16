@@ -96,6 +96,7 @@
 }
 
 .logoText {
+  font-family: 'FZ FangWei ZhuZi', var(--font-noto-serif-sc), 'Songti SC', 'SimSun', serif;
   font-size: 1rem;
   letter-spacing: 0.15em;
 }

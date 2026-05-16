@@ -1,13 +1,14 @@
 ---
-order: 1
+order: 2
 title_en: Thresholds
-title_zh: 门槛
-year: 2025
-location_en: ""
-location_zh: ""
-description_zh: ""
+title_zh: 无界：淮海路里弄公共空间再生
+year: 2023
+location_en: "Shanghai, China"
+location_zh: "上海，中国"
+description_zh: |
+  本项目是对淮海路片区城市更新的回应。前期调研揭示了该地区严重的商业同质化与原生文化遗产被遮蔽的问题。借鉴"城市针灸"的理念，我将淮海路沿线里弄的弄口识别为设计契机。每一处弄口被重新构想为新的"门户"——一次轻巧的植入式介入，既改善了里弄居民的基础设施，也为访客提供了驻足与探索的空间。这些门户犹如一扇扇通向里弄生活的窗口：它们是外来者步入真实上海生活的入口，也让原住居民得以走出局促的内部环境，将淮海中路重新认领为承载日常生活的公共场所。
 thumbnail:
-  src: /images/thumbnail-placeholder.svg
+  src: /images/thresholds/thumbnail/thresholds.png
   alt_en: Thresholds thumbnail
   alt_zh: 门槛缩略图
   width: 80

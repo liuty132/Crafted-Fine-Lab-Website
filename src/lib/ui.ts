@@ -22,5 +22,5 @@ export const UI: Record<string, LocalizedString> = {
 
 export const MANIFESTO: LocalizedString = {
   en: "We build with care.\nCraftsmanship is thought made material.\nEvery joint, every threshold, every room\nis a question about how we wish to dwell.",
-  zh: "我们以专注之心营造。\n工艺是思想的物质化。\n每一榫卯，每一门槛，每一室间\n皆是对栖居之道的追问。",
+  zh: "至缮社立足中国建筑语境，关注古建筑修缮、历史空间更新与既有建筑再生。我们尊重场所文脉、传统建造经验与当代生活需求，在保护与更新之间寻找平衡。于是建筑不止停留于过去，而能在新的日常中延续记忆、秩序与生命。",
 };

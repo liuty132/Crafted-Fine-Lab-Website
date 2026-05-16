@@ -1,14 +1,14 @@
 ---
-order: 2
+order: 3
 title_en: Burn to Born
-title_zh: 浴火而生
-year: 2025
-location_en: ""
-location_zh: ""
+title_zh: Burn to Born：乡村殡仪空间的重新想象
+year: 2024
+location_en: "Yunnan, China"
+location_zh: "云南，中国"
 description_zh: |
   一座矗立于麦田之中的殡葬塔楼，将火化、告别与安息统合于一个垂直的仪式序列之中。建筑平面取自种子的轮廓——生命最初的形态，以此回应死亡与再生的永恒循环。砖砌外墙以穿孔的方式引入光线，随着时间推移，光斑在墙面上缓慢游移，如同呼吸。来者自地下的告别厅拾级而上，穿越骨灰安置层，最终抵达塔顶的观景平台，在麦浪与天际之间完成一场关于离别与重生的旅程。
 thumbnail:
-  src: /images/thumbnail-placeholder.svg
+  src: /images/burn-to-born/thumbnail/burn-to-born.png
   alt_en: Burn to Born thumbnail
   alt_zh: 浴火而生缩略图
   width: 80

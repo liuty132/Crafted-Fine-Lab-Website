@@ -1,13 +1,16 @@
 ---
-order: 3
+order: 1
 title_en: A Gentle Parasite
-title_zh: 寄生之轻
-year: 2025
-location_en: ""
-location_zh: ""
-description_zh: ""
+title_zh: 寄生之轻：斯德哥尔摩历史建筑更新与加建
+year: 2023
+location_en: "Stockholm, Sweden"
+location_zh: "斯德哥尔摩，瑞典"
+description_zh: |
+  本项目是对建筑师 Sven Markelius 于1937年设计的历史建筑 Building Association House 的介入与扩建。建筑坐落于斯德哥尔摩中心 Norrmalm 区 Hästen 25 号，承载着层叠丰富的历史。如今，该街区已演变为以办公楼与商业中心为主导的现代街区。
+
+  设计围绕新与旧之间关系的三种态度展开。首先，对于既有建筑，我们激活并沿用了原有的交通流线，通过细微的光线介入重新塑造室内空间。其次，在新建部分加建三层开放式办公空间，与下部传统办公楼层形成鲜明对照。最后，在新旧之间的过渡层，我们保留并强化了老建筑顶层原有的餐厅与俱乐部空间，重新激活原有动线，使其成为同时服务新旧两部分的核心节点。
 thumbnail:
-  src: /images/thumbnail-placeholder.svg
+  src: /images/a-gentle-parasite/thumbnail/a-gentle-parasite.png
   alt_en: A Gentle Parasite thumbnail
   alt_zh: A Gentle Parasite缩略图
   width: 80

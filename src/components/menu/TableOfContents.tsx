@@ -8,7 +8,7 @@ import { UI } from "@/lib/ui";
 import type { Project } from "@/types";
 import styles from "./TableOfContents.module.css";
 
-const ITEM_HEIGHT = 88; // matches --menu-item-height in globals.css
+const ITEM_HEIGHT = 104; // matches --menu-item-height in globals.css
 const ITEM_HEIGHT_MOBILE = 64; // matches --menu-item-height mobile override
 const ITEM_DURATION = 150; // ms, matches CSS animation duration
 const TOTAL_STAGGER = 250; // ms, matches CSS stagger spread
