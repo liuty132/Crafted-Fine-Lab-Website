@@ -21,6 +21,6 @@ export const UI: Record<string, LocalizedString> = {
 };
 
 export const MANIFESTO: LocalizedString = {
-  en: "We build with care.\nCraftsmanship is thought made material.\nEvery joint, every threshold, every room\nis a question about how we wish to dwell.",
+  en: "We are firmly rooted in the context of Chinese architecture, focusing on the restoration of ancient buildings, the renewal of historical spaces, and the regeneration of existing structures. We honor the context of place, traditional construction wisdom, and the demands of contemporary life, seeking a harmonious balance between preservation and renewal. Consequently, architecture does not merely remain trapped in the past, but continues to sustain memory, order, and vitality within a new everyday reality.",
   zh: "至缮社立足中国建筑语境，关注古建筑修缮、历史空间更新与既有建筑再生。我们尊重场所文脉、传统建造经验与当代生活需求，在保护与更新之间寻找平衡。于是建筑不止停留于过去，而能在新的日常中延续记忆、秩序与生命。",
 };

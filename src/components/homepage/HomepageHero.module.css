@@ -6,7 +6,7 @@
   column-gap: 4rem;
   row-gap: 2rem;
   padding: 5vh 2rem;
-  max-width: calc(750px + 1200px + 16rem);
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
 }
@@ -26,7 +26,7 @@
 
 .studioNameZh {
   font-family: 'FZ FangWei ZhuZi', var(--font-noto-serif-sc), 'Songti SC', 'SimSun', serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 400;
   letter-spacing: 0.25em;
   color: var(--color-text);
@@ -36,7 +36,7 @@
 
 .studioName {
   font-family: 'Baskerville', 'Libre Baskerville', Georgia, serif;
-  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
   font-weight: 300;
   letter-spacing: 0.3em;
   color: var(--color-text);
@@ -49,6 +49,7 @@
   justify-self: end;
   align-self: start;
   text-align: right;
+  margin-top: -1.5rem;
 }
 
 .slogan {
