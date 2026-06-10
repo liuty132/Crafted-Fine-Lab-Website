@@ -1,0 +1,248 @@
+/* Centered, width-capped to match ProjectLayout .columns (leftCol + carousel) */
+.wrapper {
+  min-height: 100dvh;
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  max-width: calc(750px + 1200px + 16rem);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ── Title block (matches ProjectLayout) ── */
+.titleBlock {
+  flex: 0 0 auto;
+  padding: 3rem 2rem 2rem 0;
+}
+
+.projectTitle {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* ── Full-bleed viewer (no internal padding); fills remaining height ── */
+.viewer {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0;
+  background-color: #ffffff;
+  cursor: default;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+/* ── Page-flip: outgoing page fades out (no slide), THEN incoming page slides in + fades ── */
+.inFwd {
+  animation: inFwd 0.28s ease 0.16s both;
+}
+.inBack {
+  animation: inBack 0.28s ease 0.16s both;
+}
+/* Explicit stacking: outgoing (leaving) below incoming below counters */
+.frameOut {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.frameIn {
+  z-index: 2;
+}
+
+.outFwd {
+  animation: outFwd 0.18s ease both;
+}
+.outBack {
+  animation: outBack 0.18s ease both;
+}
+
+@keyframes inFwd {
+  from { opacity: 0; transform: translateX(3%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes inBack {
+  from { opacity: 0; transform: translateX(-3%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes outFwd {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateX(-3%); }
+}
+@keyframes outBack {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateX(3%); }
+}
+
+/* Counter overlay: fades only (no slide), mirroring the image block layout */
+.counterLayer {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.counterBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.captionSpacer {
+  visibility: hidden;
+}
+
+.capIn {
+  animation: fadeIn 0.28s ease 0.16s both;
+}
+.capOut {
+  animation: fadeOut 0.18s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ── Prev / next navigation arrows ── */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav:hover {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+/* Hug the page edges: --page-inset is the margin between viewer edge and the
+   centered page(s); subtract the arrow width so each arrow sits just outside its page. */
+.navPrev {
+  left: max(0px, calc(var(--page-inset, 0px) - 2.75rem));
+}
+
+.navNext {
+  right: max(0px, calc(var(--page-inset, 0px) - 2.75rem));
+}
+
+@media (max-width: 768px) {
+  .nav {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Page column + counter (matches ImageCarousel) ── */
+.block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: default;
+}
+
+.imageBox {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.imageBox img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageLoaded .imageBox img {
+  opacity: 1;
+}
+
+.caption {
+  flex-shrink: 0;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  text-align: right;
+}
+
+/* ── Larger desktop: increase gutters (matches ProjectLayout) ── */
+@media (min-width: 1440px) {
+  .wrapper {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .titleBlock {
+    padding-right: 4rem;
+  }
+}
+
+/* ── Single-column (mobile + tablet portrait) ── */
+@media (max-width: 1024px), (max-aspect-ratio: 4/5) {
+  .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .titleBlock {
+    padding: 2rem 4rem 0;
+  }
+}
+
+/* ── Phone overrides ── */
+@media (max-width: 768px) {
+  .titleBlock {
+    padding: 2rem 1.5rem 0;
+  }
+}

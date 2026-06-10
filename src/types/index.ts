@@ -22,4 +22,8 @@ export interface Project {
   planImages: ProjectImage[];
   year: number;
   location: LocalizedString;
+  /** Research only: one image per PDF page, auto-discovered from public/images/<slug>/ */
+  pages?: ProjectImage[];
+  /** Research only: show two pages at once on desktop (book spread). Default false. */
+  desktopSpread?: boolean;
 }
