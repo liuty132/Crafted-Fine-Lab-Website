@@ -106,6 +106,21 @@
   pointer-events: none;
 }
 
+/* Off-screen, zero-footprint preloader: blocks keep their real size so the browser
+   fetches the correct srcset candidate, but the container is clipped + invisible. */
+.preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloadBlock {
+  position: relative;
+}
+
 .counterBlock {
   display: flex;
   flex-direction: column;

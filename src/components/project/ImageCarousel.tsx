@@ -61,27 +61,12 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
     return () => clearInterval(id);
   }, [current, images.length, advance]);
 
-  // Prefetch next image during idle time
-  useEffect(() => {
-    if (images.length <= 1) return;
-    const nextIndex = (current + 1) % images.length;
-    const nextSrc = images[nextIndex].src;
-
-    const prefetch = () => {
-      const img = new window.Image();
-      img.src = nextSrc;
-    };
-
-    if ("requestIdleCallback" in window) {
-      const id = (window as Window & typeof globalThis).requestIdleCallback(prefetch);
-      return () => (window as Window & typeof globalThis).cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(prefetch, 200);
-      return () => clearTimeout(id);
-    }
-  }, [current, images]);
-
   if (images.length === 0) return null;
+
+  // Preload exactly one image ahead: eager-load the next slide (alongside the
+  // current/first) so the next advance is instant; the rest stay lazy. Uses the
+  // slide's own next/image, so the correct optimized URL is fetched.
+  const nextIndex = images.length > 1 ? (current + 1) % images.length : 0;
 
   return (
     <div ref={carouselRef} className={styles.carousel} onClick={advance}>
@@ -103,7 +88,7 @@ export default function ImageCarousel({ images, lang }: ImageCarouselProps) {
                 sizes="(max-width: 768px) 100vw, 60vw"
                 style={{ objectFit: "cover" }}
                 priority={i === 0}
-                loading={i === 0 ? "eager" : "lazy"}
+                loading={i === 0 || i === current || i === nextIndex ? "eager" : "lazy"}
                 unoptimized={image.src.endsWith(".svg")}
                 onLoad={(e) => {
                   const slide = (e.target as HTMLElement).closest(`.${styles.slide}`);

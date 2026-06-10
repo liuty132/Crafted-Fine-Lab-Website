@@ -127,25 +127,22 @@ export default function ResearchViewer({ research }: ResearchViewerProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [advance]);
 
-  // Idle-prefetch the next frame's page(s)
-  useEffect(() => {
-    if (len <= step) return;
-    const nextStart = current + step >= len ? 0 : current + step;
-    const srcs = framePages(nextStart).map((i) => pages[i].src);
-    const prefetch = () => {
-      srcs.forEach((s) => {
-        const img = new window.Image();
-        img.src = s;
-      });
-    };
-    const w = window as Window & typeof globalThis;
-    if ("requestIdleCallback" in window) {
-      const id = w.requestIdleCallback(prefetch);
-      return () => w.cancelIdleCallback(id);
-    }
-    const id = setTimeout(prefetch, 200);
-    return () => clearTimeout(id);
-  }, [current, step, len, pages, framePages]);
+  // Pages to eagerly preload: the next two frames forward + the previous two frames
+  // (the user may go backwards), minus what's already visible. Rendered as hidden
+  // <Image>s below so the browser fetches the SAME Next-optimized URL/srcset the
+  // visible page will request (a raw `new Image()` would warm a different URL).
+  const preloadIndices = useMemo(() => {
+    if (len <= step) return [];
+    const nextStartOf = (c: number) => (c + step >= len ? 0 : c + step);
+    const prevStartOf = (c: number) => (c - step < 0 ? lastFrameStart : c - step);
+    const n1 = nextStartOf(current);
+    const p1 = prevStartOf(current);
+    const starts = [n1, nextStartOf(n1), p1, prevStartOf(p1)];
+    const set = new Set<number>();
+    starts.forEach((s) => framePages(s).forEach((i) => set.add(i)));
+    framePages(current).forEach((i) => set.delete(i)); // already on screen
+    return [...set];
+  }, [current, step, len, lastFrameStart, framePages]);
 
   useEffect(() => () => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
@@ -249,6 +246,29 @@ export default function ResearchViewer({ research }: ResearchViewerProps) {
             {framePages(current).map(renderCounterBlock)}
           </div>
         </div>
+
+        {/* Hidden eager preload of upcoming/previous pages for instant flips */}
+        {blockSize && preloadIndices.length > 0 && (
+          <div className={styles.preload} aria-hidden>
+            {preloadIndices.map((i) => (
+              <div
+                key={i}
+                className={styles.preloadBlock}
+                style={{ width: blockSize.w, height: blockSize.h }}
+              >
+                <Image
+                  src={pages[i].src}
+                  alt=""
+                  fill
+                  sizes={twoUp ? "50vw" : "100vw"}
+                  style={{ objectFit: "contain" }}
+                  loading="eager"
+                  onLoad={() => loadedRef.current.add(pages[i].src)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {len > step && (
           <>
