@@ -1,9 +1,5 @@
-import AboutContent from "./AboutContent";
-
-export const metadata = {
-  title: "About — 至缮社 Crafted Fine Lab",
-};
+import { redirect } from "next/navigation";
 
 export default function AboutPage() {
-  return <AboutContent />;
+  redirect("/about/studio");
 }

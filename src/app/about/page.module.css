@@ -28,6 +28,16 @@
   margin-bottom: 0;
 }
 
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+}
+
 @media (min-width: 1440px) {
   .page {
     padding-left: 4rem;

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
   const project = await getProjectBySlug(slug);
   if (!project) return {};
   return {
-    title: `${project.title.en} — 至缮社 Crafted Fine Lab`,
+    title: `${project.title.en} — 至缮社 Shàn Architects + Lab`,
   };
 }
 

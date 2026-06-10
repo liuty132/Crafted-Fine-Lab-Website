@@ -21,7 +21,7 @@ const notoSerifSC = Noto_Serif_SC({
 });
 
 export const metadata: Metadata = {
-  title: "至缮社 Crafted Fine Lab",
+  title: "至缮社 Shàn Architects + Lab",
   description:
     "An architecture and design studio committed to thoughtful making.",
 };

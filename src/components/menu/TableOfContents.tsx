@@ -13,7 +13,7 @@ const ITEM_HEIGHT_MOBILE = 64; // matches --menu-item-height mobile override
 const ITEM_DURATION = 150; // ms, matches CSS animation duration
 const TOTAL_STAGGER = 250; // ms, matches CSS stagger spread
 
-type ExpandedSection = "projects" | "research" | null;
+type ExpandedSection = "projects" | "research" | "about" | null;
 
 interface TableOfContentsProps {
   projects: Project[];
@@ -68,7 +68,7 @@ export default function TableOfContents({
     return () => window.removeEventListener("resize", computeCount);
   }, [projects.length, research.length]);
 
-  const handleToggle = useCallback((section: "projects" | "research") => {
+  const handleToggle = useCallback((section: "projects" | "research" | "about") => {
     if (expanded === section) {
       // Close current section
       if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -127,6 +127,12 @@ export default function TableOfContents({
   const isProjectsClosing = closing === "projects";
   const isResearchOpen = expanded === "research";
   const isResearchClosing = closing === "research";
+
+  // About: two fixed text links the same size as project rows — always fit, so the list never scrolls.
+  // The scroll track/thumb render full-height as a static guide-line, matching Works/Research.
+  const isAboutOpen = expanded === "about";
+  const aContainerH = 2 * itemHeight;
+  const aAnimatedH = isAboutOpen ? `${aContainerH}px` : "0px";
 
   return (
     <nav className={`${styles.toc}${className ? ` ${className}` : ""}`}>
@@ -207,9 +213,28 @@ export default function TableOfContents({
 
       {/* III. About */}
       <div className={styles.section}>
-        <Link href="/about" className={styles.sectionHeading} onClick={onClose}>
-          <span className={styles.linkText}>III. {UI.about[lang]}</span>
-        </Link>
+        <button
+          ref={(el) => { sectionRefs.current.about = el; }}
+          className={`${styles.sectionHeading} ${styles.expandableHeading}${isAboutOpen ? ` ${styles.expanded}` : ""}`}
+          onClick={() => handleToggle("about")}
+        >
+          <span className={styles.expandableText}>III. {UI.about[lang]}</span>
+          <span className={styles.arrow}><span className={styles.arrowDown}>›</span><span className={styles.arrowUp}>‹</span></span>
+        </button>
+
+        <div className={styles.listContainer}>
+          <div className={`${styles.scrollTrack}${isAboutOpen ? ` ${styles.scrollTrackVisible}` : ""}`} style={{ height: aAnimatedH }}>
+            <div className={styles.scrollThumb} style={{ height: `${aContainerH}px`, transform: "translateY(0)" }} />
+          </div>
+          <div className={styles.listScroll} style={{ height: aAnimatedH }}>
+            <Link href="/about/studio" className={styles.aboutSubLink} onClick={onClose}>
+              <span className={styles.linkText}>{UI.aboutStudio[lang]}</span>
+            </Link>
+            <Link href="/about/founders" className={styles.aboutSubLink} onClick={onClose}>
+              <span className={styles.linkText}>{UI.aboutFounders[lang]}</span>
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* IV. Contact */}
