@@ -7,6 +7,16 @@ location_zh: "纽波特，罗德岛州，美国"
 desktop_spread: true
 page_width: 1275
 page_height: 1650
+pages:
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-1.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-2.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-3.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-4.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-5.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-6.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-7.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-8.png
+  - /images/cross-sectional-ivy-lodge-library/pdf/pdf-9.png
 thumbnail:
   src: /images/cross-sectional-ivy-lodge-library/thumbnail/cross-sectional-ivy-lodge-library.png
   alt_en: Cross-Section Analysis of Ivy Lodge Library Room

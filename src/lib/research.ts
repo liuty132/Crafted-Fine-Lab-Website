@@ -6,7 +6,6 @@ import html from "remark-html";
 import type { Project, ProjectImage } from "@/types";
 
 const researchDir = path.join(process.cwd(), "src/data/research");
-const publicDir = path.join(process.cwd(), "public");
 
 interface RawImageFrontmatter {
   src: string;
@@ -25,20 +24,18 @@ function parseImage(raw: RawImageFrontmatter): ProjectImage {
   };
 }
 
-// Auto-discover converted PDF pages: public/images/<slug>/pdf/pdf-NN.png (uniform size from frontmatter).
-function discoverPages(slug: string, data: matter.GrayMatterFile<string>["data"]): ProjectImage[] {
-  const dir = path.join(publicDir, "images", slug, "pdf");
-  if (!fs.existsSync(dir)) return [];
-  const files = fs
-    .readdirSync(dir)
-    .filter((f) => /^pdf-.*\.(png|jpe?g|webp)$/i.test(f)) // ignores .DS_Store
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+// Build PDF pages from the `pages` list in frontmatter (each entry is a /public path).
+// Listing them in the .md (rather than scanning public/ via fs) keeps Vercel's file
+// tracer from bundling the whole images tree into the serverless function.
+// Pages share a uniform size (page_width/page_height) and the doc title as alt text.
+function buildPages(data: matter.GrayMatterFile<string>["data"]): ProjectImage[] {
+  const srcs = (data.pages as string[]) ?? [];
   const width = data.page_width ?? 1275;
   const height = data.page_height ?? 1650;
   const altEn = data.page_alt_en ?? data.title_en;
   const altZh = data.page_alt_zh ?? data.title_zh;
-  return files.map((f) => ({
-    src: `/images/${slug}/pdf/${f}`,
+  return srcs.map((src) => ({
+    src,
     alt: { en: altEn, zh: altZh },
     width,
     height,
@@ -62,7 +59,7 @@ async function parseResearchFile(slug: string): Promise<Project> {
     planImages: (data.plan_images as RawImageFrontmatter[] || []).map(parseImage),
     year: data.year,
     location: { en: data.location_en, zh: data.location_zh },
-    pages: discoverPages(slug, data),
+    pages: buildPages(data),
     desktopSpread: data.desktop_spread === true,
   };
 }
