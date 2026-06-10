@@ -70,20 +70,15 @@ export default function MenuOverlay({
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
 
-  // Prevent body scroll when open (works on iOS Safari)
+  // Lock page scroll while the menu is open WITHOUT moving the scroll
+  // position. Using overflow:hidden (instead of position:fixed) keeps the
+  // document's scrollY intact, so sticky elements such as the project
+  // carousel stay exactly where they are and don't shift on open/close.
   useEffect(() => {
     if (isOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+      document.documentElement.style.overflow = "hidden";
       return () => {
-        document.body.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        window.scrollTo(0, scrollY);
+        document.documentElement.style.overflow = "";
       };
     }
   }, [isOpen]);
