@@ -197,10 +197,26 @@ export default function ResearchViewer({ research }: ResearchViewerProps) {
   );
 
   // Side margin between the stage edge and the centered page(s) — used to keep the
-  // nav arrows hugging the pages instead of sitting at the far viewer edges.
-  const visibleCount = framePages(current).length;
+  // nav arrows hugging the pages instead of sitting at the far viewer edges. In 2-up
+  // mode always reserve a full spread's width (even on an odd last page, which renders
+  // a single page plus an empty right half) so the arrows never shift position.
+  const insetCount = twoUp ? step : framePages(current).length;
   const pageInset =
-    blockSize && stageW ? Math.max(0, (stageW - visibleCount * blockSize.w) / 2) : 0;
+    blockSize && stageW ? Math.max(0, (stageW - insetCount * blockSize.w) / 2) : 0;
+
+  // In 2-up mode, pad a single-page frame (odd last page) with an empty block of equal
+  // width so flex-centering places the page on the left half and leaves the right empty.
+  const padFrame = (nodes: React.ReactNode[]): React.ReactNode[] =>
+    twoUp && nodes.length < step && blockSize
+      ? [
+          ...nodes,
+          <div
+            key="spacer"
+            aria-hidden
+            style={{ width: blockSize.w, height: blockSize.h }}
+          />,
+        ]
+      : nodes;
 
   return (
     <div className={styles.wrapper}>
@@ -222,20 +238,20 @@ export default function ResearchViewer({ research }: ResearchViewerProps) {
               className={`${styles.frame} ${styles.frameOut} ${direction === "fwd" ? styles.outFwd : styles.outBack}`}
               aria-hidden
             >
-              {framePages(prev).map(renderImageBlock)}
+              {padFrame(framePages(prev).map(renderImageBlock))}
             </div>
           )}
           <div
             key={current}
             className={`${styles.frame} ${styles.frameIn} ${direction === "fwd" ? styles.inFwd : styles.inBack}`}
           >
-            {framePages(current).map(renderImageBlock)}
+            {padFrame(framePages(current).map(renderImageBlock))}
           </div>
 
           {/* Page counters — fade only (no slide), like the project carousel */}
           {prev !== null && (
             <div className={`${styles.frame} ${styles.counterLayer} ${styles.capOut}`} aria-hidden>
-              {framePages(prev).map(renderCounterBlock)}
+              {padFrame(framePages(prev).map(renderCounterBlock))}
             </div>
           )}
           <div
@@ -243,7 +259,7 @@ export default function ResearchViewer({ research }: ResearchViewerProps) {
             className={`${styles.frame} ${styles.counterLayer} ${styles.capIn}`}
             aria-hidden
           >
-            {framePages(current).map(renderCounterBlock)}
+            {padFrame(framePages(current).map(renderCounterBlock))}
           </div>
         </div>
 
