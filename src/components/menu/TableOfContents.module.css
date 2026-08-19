@@ -24,6 +24,7 @@
   color: var(--color-text);
   text-decoration: none;
   padding: 2rem;
+  line-height: 1;
   transition: background-color 0.15s ease;
 }
 
@@ -51,6 +52,13 @@
   }
 }
 
+/* Section headings (I/II/III/IV) — extra gap and weight so the red rule
+   reads as an accent, not a line crowding the descenders */
+.sectionHeading .linkText::after {
+  bottom: -4px;
+  height: 1.5px;
+}
+
 /* Expandable heading (button) — reset browser defaults */
 button.sectionHeading {
   background: none;
@@ -70,10 +78,10 @@ button.sectionHeading {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: -4px;
   width: 100%;
-  height: 1px;
-  background-color: currentColor;
+  height: 1.5px;
+  background-color: #ff3333;
   transform: scaleX(0) translateZ(0);
   transform-origin: left center;
   transition: transform var(--transition-link);
